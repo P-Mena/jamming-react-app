@@ -9,11 +9,12 @@ function App() {
     const [favourite, setFavourite] = useState([]);
 
     const updateFavourite = (author, title, album, id) => {
-        if (!favourite.find((f) => id === f.id)) {
-            setFavourite((prev) => [...prev, { author, title, album, id }]);
-        } else {
+        if (favourite.find((song) => id === song.id)) {
             alert("the song is already in your playlist");
+            return;
         }
+
+        setFavourite((prev) => [...prev, { author, title, album, id }]);
     };
 
     const deleteSong = (id) => {
@@ -22,7 +23,7 @@ function App() {
         });
     };
 
-    const sendList = () => {
+    const resetFavourite = () => {
         setFavourite([]);
     };
 
@@ -34,7 +35,7 @@ function App() {
             <Playlist
                 favouriteSongs={favourite}
                 deleteSong={deleteSong}
-                sendList={sendList}
+                resetFavourite={resetFavourite}
             />
         </div>
     );

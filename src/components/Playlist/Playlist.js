@@ -2,7 +2,13 @@ import React from "react";
 import Tracklist from "./Tracklist/Tracklist";
 import Track from "./Track/Track";
 
-export default function Playlist({ favouriteSongs, deleteSong, sendList }) {
+export default function Playlist({
+    favouriteSongs,
+    deleteSong,
+    resetFavourite,
+}) {
+    const getFavouriteIds = () => favouriteSongs.map((song) => song.id);
+
     return (
         <div>
             <div className="title-Playlist">
@@ -14,7 +20,10 @@ export default function Playlist({ favouriteSongs, deleteSong, sendList }) {
                     favouriteSongs={favouriteSongs}
                     deleteSong={deleteSong}
                 />
-                <Track sendList={sendList} />
+                <Track
+                    resetFavourite={resetFavourite}
+                    getFavouriteIds={getFavouriteIds}
+                />
             </div>
         </div>
     );

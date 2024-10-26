@@ -1,9 +1,12 @@
 import React from "react";
 
-export default function Track({ sendList }) {
+export default function Track({ resetFavourite, getFavouriteIds }) {
     const handleOnClick = () => {
-        sendList();
+        const listIds = getFavouriteIds();
+        console.log(listIds);
+        resetFavourite();
     };
+
     return (
         <div>
             <button onClick={handleOnClick}> Save to Spotify</button>
